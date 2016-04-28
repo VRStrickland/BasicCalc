@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +19,10 @@ namespace BasicCalc
             return NewString;
         }
 
+
+
+
+
         private bool IsValidInput(string InputString, string NewAddition)
         {
             bool RetBool = true;
@@ -28,9 +32,9 @@ namespace BasicCalc
                 case ".":
                     int res1 = InputString.IndexOf(".");
                     if (res1 != -1)
-                        {
-                            RetBool = false;
-                        }
+                    {
+                        RetBool = false;
+                    }
                     break;
                 case "1":
                 default:
