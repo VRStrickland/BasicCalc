@@ -10,6 +10,7 @@ namespace BasicCalc
     {
         public string UpdateDisplay(string InputString, string NewAddition)
         {
+            //This method will be used to add char to the calc display
             string NewString = "";
             if (!IsValidInput(InputString, NewAddition))
             {
@@ -25,6 +26,9 @@ namespace BasicCalc
 
         private bool IsValidInput(string InputString, string NewAddition)
         {
+            //This method has the job of ensuring only valid additions are added to the calc screen
+            //as of right now the only invalid one I can think of is two decimal places.  It checks
+            //for that now.
             bool RetBool = true;
 
             switch (NewAddition)
