@@ -28,11 +28,14 @@ namespace BasicCalc
         // event handler to be called.
         void frmCalculator_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar >= 46 && e.KeyChar <= 57)
+            if (e.KeyChar >= 42 && e.KeyChar <= 57)
             {
 
                 switch (e.KeyChar)
                 {
+                    case (char)42://*
+                        //btnDecimal.PerformClick();
+                        break;
                     case (char)46://.
                         btnDecimal.PerformClick();
                         break;
@@ -149,5 +152,9 @@ namespace BasicCalc
 
         }
 
+        private void frmCalculator_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
