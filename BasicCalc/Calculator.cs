@@ -13,40 +13,66 @@ namespace BasicCalc
 {
     public partial class frmCalculator : Form
     {
-        [DllImport("user32.dll")]
-        public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
-        [DllImport("user32.dll")]
-        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
-
-        const int HOTKEY_ONE = 1;
-        const int HOTKEY_TWO = 2;
 
         public frmCalculator()
         {
-            RegisterHotKey(this.Handle, HOTKEY_ONE, 0, (int)Keys.NumPad1);
-            RegisterHotKey(this.Handle, HOTKEY_TWO, 0, (int)Keys.NumPad2);
 
             InitializeComponent();
+
+            this.KeyPreview = true;
+            this.KeyPress += new KeyPressEventHandler(frmCalculator_KeyPress);
         }
 
-
-        protected override void WndProc(ref Message m)
+        // Detect all numeric characters at the form level and consume
+        // Note that Form.KeyPreview must be set to true for this
+        // event handler to be called.
+        void frmCalculator_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (m.Msg == 0x0312 && m.WParam.ToInt32() == HOTKEY_ONE)
+            if (e.KeyChar >= 46 && e.KeyChar <= 57)
             {
-                btn1.PerformClick();
+
+                switch (e.KeyChar)
+                {
+                    case (char)46://.
+                        btnDecimal.PerformClick();
+                        break;
+                    case (char)48://0
+                        btnZero.PerformClick();
+                        break;
+                    case (char)49://1
+                        btn1.PerformClick();
+                        break;
+                    case (char)50://2
+                        btn2.PerformClick();
+                        break;
+                    case (char)51://3
+                        btn3.PerformClick();
+                        break;
+                    case (char)52://4
+                        btn4.PerformClick();
+                        break;
+                    case (char)53://5
+                        btn5.PerformClick();
+                        break;
+                    case (char)54://6
+                        btn6.PerformClick();
+                        break;
+                    case (char)55://7
+                        btn7.PerformClick();
+                        break;
+                    case (char)56://8
+                        btn8.PerformClick();
+                        break;
+                    case (char)57://9
+                        btn9.PerformClick();
+                        break;
+                    case (char)58:
+                        break;
+                }
             }
-            if (m.Msg == 0x0312 && m.WParam.ToInt32() == HOTKEY_TWO)
-            {
-                btn2.PerformClick();
-            }
-            base.WndProc(ref m);
         }
 
-    
-
-
-    private void btn1_Click(object sender, EventArgs e)
+        private void btn1_Click(object sender, EventArgs e)
         {
             CalcDisplay CD = new CalcDisplay();
             lblCalc.Text = CD.UpdateDisplay(lblCalc.Text,"1");
@@ -122,5 +148,6 @@ namespace BasicCalc
             lblCalc.Text = CD.UpdateDisplay(lblCalc.Text, ".");
 
         }
+
     }
 }
