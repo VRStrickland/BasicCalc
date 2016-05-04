@@ -36,6 +36,12 @@ namespace BasicCalc
                     case (char)42://*
                         //btnDecimal.PerformClick();
                         break;
+                    case (char)43://+
+                        break;
+                    case (char)45:// -
+                        break;
+                    case (char)47:// "/"
+                        break;
                     case (char)46://.
                         btnDecimal.PerformClick();
                         break;
